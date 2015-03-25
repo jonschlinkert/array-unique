@@ -7,6 +7,7 @@
 
 'use strict';
 
+/* deps:mocha */
 var assert = require('assert');
 var should = require('should');
 var unique = require('./');
