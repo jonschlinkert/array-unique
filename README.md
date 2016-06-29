@@ -1,6 +1,6 @@
 # array-unique [![NPM version](https://badge.fury.io/js/array-unique.svg)](http://badge.fury.io/js/array-unique)  [![Build Status](https://travis-ci.org/jonschlinkert/array-unique.svg)](https://travis-ci.org/jonschlinkert/array-unique) 
 
-> Return an array free of duplicate values. Fastest ES5 implementation.
+> Remove duplicate values from an array. Fastest ES5 implementation.
 
 ## Install with [npm](npmjs.org)
 
@@ -13,8 +13,17 @@ npm i array-unique --save
 ```js
 var unique = require('array-unique');
 
-unique(['a', 'b', 'c', 'c']);
-//=> ['a', 'b', 'c']
+var arr = ['a', 'b', 'c', 'c'];
+console.log(unique(arr)) //=> ['a', 'b', 'c']
+console.log(arr)         //=> ['a', 'b', 'c']
+
+/* The above modifies the input array. To prevent that at a slight performance cost: */
+var unique = require("array-unique").immutable;
+
+var arr = ['a', 'b', 'c', 'c'];
+console.log(unique(arr)) //=> ['a', 'b', 'c']
+console.log(arr)         //=> ['a', 'b', 'c', 'c']
+
 ```
 
 ## Related
