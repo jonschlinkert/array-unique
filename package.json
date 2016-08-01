@@ -1,7 +1,7 @@
 {
   "name": "array-unique",
-  "description": "Return an array free of duplicate values. Fastest ES5 implementation.",
-  "version": "0.2.1",
+  "description": "Remove duplicate values from an array. Fastest ES5 implementation.",
+  "version": "0.3.1",
   "homepage": "https://github.com/jonschlinkert/array-unique",
   "author": {
     "name": "Jon Schlinkert",
