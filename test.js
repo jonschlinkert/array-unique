@@ -7,19 +7,19 @@
 
 'use strict';
 
-/* deps:mocha */
+require('mocha');
 var assert = require('assert');
 var should = require('should');
 var unique = require('./');
 
-describe('unique', function () {
-  it('should throw an error if the value passed is not an array:', function () {
-    (function () {
+describe('unique', function() {
+  it('should throw an error if the value passed is not an array:', function() {
+    (function() {
       unique('a', 'b', 'c');
     }).should.throw('array-unique expects an array.');
   });
 
-  it('should return an array with unique values:', function () {
+  it('should return an array with unique values:', function() {
     unique(['a', 'b', 'c', 'a', 'b', 'd']).should.eql(['a', 'b', 'c', 'd']);
     unique(['a', 'b', 'c', 'a', 'b', 'a', 'b', 'c', 'b', 'f', 'a', 'b']).should.eql(['a', 'b', 'c', 'f']);
     unique(['a', 'b', 'c', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b']).should.eql(['a', 'b', 'c', 'f', 'x', 'y', 'z']);
@@ -40,15 +40,15 @@ describe('unique', function () {
   });
 });
 
-describe('unique.immutable', function () {
-  it('should throw an error if the value passed is not an array:', function () {
-    (function () {
+describe('unique.immutable', function() {
+  it('should throw an error if the value passed is not an array:', function() {
+    (function() {
       unique.immutable('a', 'b', 'c');
     }).should.throw('array-unique expects an array.');
   });
 
-  it('should return an array with unique values without modifying the input:', function () {
-    (function () {
+  it('should return an array with unique values without modifying the input:', function() {
+    (function() {
       var original = ['a', 'b', 'c', 'a', 'b', 'd'];
       var before =   ['a', 'b', 'c', 'a', 'b', 'd'];
       var expected = ['a', 'b', 'c', 'd'];
@@ -57,7 +57,7 @@ describe('unique.immutable', function () {
       before.should.eql(original);
     })();
 
-    (function () {
+    (function() {
       var original = ['a', 'b', 'c', 'a', 'b', 'a', 'b', 'c', 'b', 'f', 'a', 'b'];
       var before   = ['a', 'b', 'c', 'a', 'b', 'a', 'b', 'c', 'b', 'f', 'a', 'b'];
       var expected = ['a', 'b', 'c', 'f'];
@@ -66,7 +66,7 @@ describe('unique.immutable', function () {
       before.should.eql(original);
     })();
 
-    (function () {
+    (function() {
       var original = ['a', 'b', 'c', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b']
       var before   = ['a', 'b', 'c', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b', 'a', 'b', 'a', 'b', 'b', 'f', 'a', 'b', 'x', 'y', 'z', 'a', 'b']
       var expected = ['a', 'b', 'c', 'f', 'x', 'y', 'z'];
@@ -74,7 +74,7 @@ describe('unique.immutable', function () {
       before.should.eql(original);
     })();
 
-    (function () {
+    (function() {
       var original = [
         'foo/bar/baz/quux/fez/test/fixtures',
         'foo/bar/baz/quux/fez/test/fixtures',
