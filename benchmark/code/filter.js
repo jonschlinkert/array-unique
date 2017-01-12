@@ -1,12 +1,9 @@
 'use strict';
 
-module.exports = function (arr) {
-  var stack = [];
-  return arr.filter(function (ele) {
-    if (stack.indexOf(ele) > -1) {
-      return false;
-    }
-    stack.push(ele);
-    return true;
-  });
+module.exports = function(arr) {
+  return arr.filter(firstOccuring);
 };
+
+function firstOccuring(el, idx, arr) {
+  return (idx === arr.indexOf(el));
+}
