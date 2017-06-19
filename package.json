@@ -58,5 +58,8 @@
     "lint": {
       "reflinks": true
     }
+  },
+  "dependencies": {
+    "benchmarked": "^1.1.1"
   }
 }
